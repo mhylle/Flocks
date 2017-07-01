@@ -1,7 +1,10 @@
 <!--The whole content below can be removed with the new code.-->
-<div class="flockPanel" style="position: relative; width: 400px;height: 400px; background-color: lightblue">
-  <div *ngFor="let actor of actors" >
-    <div  style="position:absolute;width: 10px; height: 10px;background-color: lightgray; border: 1px solid black" [style.left]="actor.posX"
-         [style.top]="actor.posY"></div>
-  </div>
+<div class="flockPanel" style="position: relative; width: 400px;height: 400px; background-color: lightblue;">
+  <div *ngFor="let actor of actors"
+       style="position:absolute;width: 10px; height: 10px;"
+       [style.left]="actor.posX"
+       [style.top]="actor.posY"
+       [style.transform]="actor.rotation"
+       class="arrow"
+  ></div>
 </div>

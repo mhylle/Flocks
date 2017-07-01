@@ -8,6 +8,7 @@ export class Actor {
   speed: number;
   posX: string;
   posY: string;
+  rotation: string;
   behaviours: Behaviour[] = [];
 
   private scaledDirection : Vector2d;
@@ -43,6 +44,11 @@ export class Actor {
       let behaviour = this.behaviours[i];
       behaviour.update(this);
     }
+    let upVector = new Vector2d();
+    upVector.x = 0;
+    upVector.y = 1;
+    let tmpRot = Math.acos(this.direction.dot(upVector) / (upVector.length() * this.direction.length()));
+    this.rotation = "rotate("+tmpRot+"deg)";
 
     // console.log(this.name + " position: (" + this.position.x + ", " + this.position.y + ")");
   }
