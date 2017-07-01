@@ -3,14 +3,15 @@ export class Vector2d {
   y: number;
 
   constructor() {
-    this.x = 0;
-    this.y = 0;
+    this.x = 50;
+    this.y = 50;
   }
 
   normalize() {
-    if (this.length() != 0) {
-      this.x = this.x / this.length();
-      this.y = this.y / this.length();
+    let length = this.length();
+    if (length != 0) {
+      this.x = this.x / length;
+      this.y = this.y / length;
     }
   }
 
@@ -36,7 +37,10 @@ export class Vector2d {
   }
 
   length(): number {
-    return Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2));
+    let x2 = Math.pow(this.x, 2);
+    //noinspection JSSuspiciousNameCombination
+    let y2 = Math.pow(this.y, 2);
+    return Math.sqrt(x2 + y2);
   }
 
   dot(vector2d: Vector2d): number {

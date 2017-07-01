@@ -1,12 +1,11 @@
 import {Behaviour} from "./Behaviour";
 import {Actor} from "../model/Actor";
 import {Vector2d} from "../geometry/Vector2d";
-export class WanderBehaviour implements Behaviour{
+export class WanderBehaviour implements Behaviour {
   private changeInterval: number;
   private weight: number;
   private direction: Vector2d;
-  private tick: number;
-
+  private tick: number = 0;
 
   constructor(changeInterval: number, weight: number) {
     this.changeInterval = changeInterval;
@@ -15,7 +14,7 @@ export class WanderBehaviour implements Behaviour{
 
   update(actor: Actor) {
     if (this.tick == 0) {
-      this.direction =Actor.getRandomDirection();
+      this.direction = Actor.getRandomDirection();
     }
     this.tick++;
     this.tick %= this.changeInterval;
