@@ -1,10 +1,13 @@
 <!--The whole content below can be removed with the new code.-->
-<div class="flockPanel" style="position: relative; width: 400px;height: 400px; background-color: lightblue;">
+<div class="flockPanel" style="position: relative; width: 800px;height: 800px; background-color: lightblue;">
   <div *ngFor="let actor of actors"
-       style="position:absolute;width: 10px; height: 10px;"
+       style="position:absolute;width: 24px; height: 24px;"
        [style.left]="actor.posX"
        [style.top]="actor.posY"
        [style.transform]="actor.rotation"
-       class="arrow"
-  ></div>
+       
+       [ngClass]="actor.image"
+  >
+    <!--{{actor.direction.x}}, {{actor.direction.y}}-->
+  </div>
 </div>

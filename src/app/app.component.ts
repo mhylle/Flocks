@@ -14,7 +14,7 @@ import {AvoidBehaviour} from "./behaviours/AvoidBehaviour";
 })
 export class AppComponent implements OnInit, OnDestroy {
   title = 'app';
-  nrOfBirds: number = 250;
+  nrOfBirds: number = 200;
   actors: Actor[] = [];
 
   private subscription: Subscription;
@@ -29,21 +29,23 @@ export class AppComponent implements OnInit, OnDestroy {
 
       let bird = new Actor();
       if (i == 0) {
+        bird.image ="leader";
         leader = bird;
       }
       bird.name = "Bird" + i;
       bird.direction = Actor.getRandomDirection();
       bird.speed = 0.01;
-      bird.position = Actor.getRandomPosition(400, 400);
+      bird.position = Actor.getRandomPosition(800, 800);
 
-      let wanderBehaviour = new WanderBehaviour(0.01, 80);
+      let wanderBehaviour = new WanderBehaviour(0.10, 80);
       bird.addBehaviour(wanderBehaviour);
 
-      let boundsBehaviour = new BoundsBehaviour(0, 400, 0, 400);
+      let boundsBehaviour = new BoundsBehaviour(0, 800, 0, 800);
       bird.addBehaviour(boundsBehaviour);
 
       if (i > 0) {
-        let seekBehaviour = new SeekBehaviour(100, leader);
+        let seekBehaviour = new SeekBehaviour(35, leader);
+        bird.image ="arrow"
         bird.addBehaviour(seekBehaviour);
       }
 
@@ -56,7 +58,7 @@ export class AppComponent implements OnInit, OnDestroy {
         if (i == j) {
           continue;
         }
-        let avoidBehaviour = new AvoidBehaviour(200, currentBird, 10.0);
+        let avoidBehaviour = new AvoidBehaviour(100, currentBird,25.0);
         mainBird.addBehaviour(avoidBehaviour);
       }
     }

@@ -10,11 +10,12 @@ export class Actor {
   posY: string;
   rotation: string;
   behaviours: Behaviour[] = [];
+  image: string;
 
-  private scaledDirection : Vector2d;
+  private scaledDirection: Vector2d;
 
   static getRandomDirection(): Vector2d {
-    let rotation = Math.random() * 2 * Math.PI;
+    let rotation = Math.random() * Math.PI/180;
     let vector2d = new Vector2d();
     vector2d.x = Math.cos(rotation);
     vector2d.y = Math.sin(rotation);
@@ -47,8 +48,14 @@ export class Actor {
     let upVector = new Vector2d();
     upVector.x = 0;
     upVector.y = 1;
-    let tmpRot = Math.acos(this.direction.dot(upVector) / (upVector.length() * this.direction.length()));
-    this.rotation = "rotate("+tmpRot+"deg)";
+    let rightVector = new Vector2d();
+    rightVector .x = 1;
+    rightVector .y = 0;
+
+    let tmpRot = Math.acos(upVector.dot(this.direction)) * 180/Math.PI;
+    // let tmpRot = Math.atan2(upVector.x, upVector.y) - Math.atan2(this.direction.y, this.direction.x);
+
+    this.rotation = "rotate(" + tmpRot + "deg)";
 
     // console.log(this.name + " position: (" + this.position.x + ", " + this.position.y + ")");
   }
