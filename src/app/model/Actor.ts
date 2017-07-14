@@ -19,6 +19,7 @@ export class Actor {
     let vector2d = new Vector2d();
     vector2d.x = Math.cos(rotation);
     vector2d.y = Math.sin(rotation);
+    vector2d.normalize();
     return vector2d;
   }
 
@@ -36,8 +37,8 @@ export class Actor {
   }
 
   update() {
-    this.scaledDirection = this.direction.scalar(this.speed);
     this.direction.normalize();
+    this.scaledDirection = this.direction.scalar(this.speed);
     this.position = this.position.add(this.scaledDirection);
     this.posX = Math.floor(this.position.x) + 'px';
     this.posY = Math.floor(this.position.y) + 'px';
@@ -49,8 +50,8 @@ export class Actor {
     upVector.x = 0;
     upVector.y = 1;
     let rightVector = new Vector2d();
-    rightVector .x = 1;
-    rightVector .y = 0;
+    rightVector .x = 0;
+    rightVector .y = 1;
 
     let tmpRot = Math.acos(upVector.dot(this.direction)) * 180/Math.PI;
     // let tmpRot = Math.atan2(upVector.x, upVector.y) - Math.atan2(this.direction.y, this.direction.x);

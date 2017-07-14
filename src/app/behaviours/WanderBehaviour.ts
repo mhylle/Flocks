@@ -17,13 +17,17 @@ export class WanderBehaviour implements Behaviour {
       this.direction = Actor.getRandomDirection();
     }
     this.tick++;
-    this.tick %= this.changeInterval;
 
-    actor.direction = actor.direction.add(this.direction.scalar(this.weight));
+    if (this.changeInterval == this.tick) {
+      console.log("resetting");
+      this.tick = 0;
+    }
+
+    let vector2d = this.direction.scalar(this.weight);
+    actor.direction = actor.direction.add(vector2d);
   }
 
   getActor(): Actor {
     return null;
   }
-
 }
