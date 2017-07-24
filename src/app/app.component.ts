@@ -14,7 +14,7 @@ import {AvoidBehaviour} from "./behaviours/AvoidBehaviour";
 })
 export class AppComponent implements OnInit, OnDestroy {
   title = 'app';
-  nrOfBirds: number = 1;
+  nrOfBirds: number = 2;
   actors: Actor[] = [];
 
   appWidth = 300;
@@ -39,7 +39,7 @@ export class AppComponent implements OnInit, OnDestroy {
       bird.speed = 1.5;
       bird.position = Actor.getRandomPosition(this.appWidth, this.appHeight);
 
-      let wanderBehaviour = new WanderBehaviour(8, 400);
+      let wanderBehaviour = new WanderBehaviour(80, 400);
       bird.addBehaviour(wanderBehaviour);
 
       let boundsBehaviour = new BoundsBehaviour(0, this.appWidth, 0, this.appHeight);

@@ -15,8 +15,8 @@ export class WanderBehaviour implements Behaviour {
   update(actor: Actor) {
     if (this.tick == 0) {
       this.direction = Actor.getRandomDirection();
-      console.log("resetting");
     }
+    // actor.debugMsg = "" + this.tick;
     this.tick++;
 
     if (this.changeInterval == this.tick) {
