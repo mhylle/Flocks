@@ -15,15 +15,16 @@ export class WanderBehaviour implements Behaviour {
   update(actor: Actor) {
     if (this.tick == 0) {
       this.direction = Actor.getRandomDirection();
+      console.log("resetting");
     }
     this.tick++;
 
     if (this.changeInterval == this.tick) {
-      console.log("resetting");
       this.tick = 0;
     }
 
     let vector2d = this.direction.scalar(this.weight);
+    actor.debugMsg ="" + vector2d.x + " , " + vector2d.y;
     actor.direction = actor.direction.add(vector2d);
   }
 

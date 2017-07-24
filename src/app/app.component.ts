@@ -39,7 +39,7 @@ export class AppComponent implements OnInit, OnDestroy {
       bird.speed = 1.5;
       bird.position = Actor.getRandomPosition(this.appWidth, this.appHeight);
 
-      let wanderBehaviour = new WanderBehaviour(80, 400);
+      let wanderBehaviour = new WanderBehaviour(8, 400);
       bird.addBehaviour(wanderBehaviour);
 
       let boundsBehaviour = new BoundsBehaviour(0, this.appWidth, 0, this.appHeight);

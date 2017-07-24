@@ -46,4 +46,13 @@ export class Vector2d {
   dot(vector2d: Vector2d): number {
     return this.x * vector2d.x + this.y * vector2d.y;
   }
+
+  rotateRadians(radians): Vector2d {
+    let result = new Vector2d();
+    let ca = Math.cos(radians);
+    let sa = Math.sin(radians);
+    result.x = ca * this.x - sa * this.y;
+    result.y = sa * this.x - ca * this.y;
+    return result;
+  }
 }
