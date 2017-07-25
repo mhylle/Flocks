@@ -14,7 +14,7 @@ import {AvoidBehaviour} from "./behaviours/AvoidBehaviour";
 })
 export class AppComponent implements OnInit, OnDestroy {
   title = 'app';
-  nrOfBirds: number = 100;
+  nrOfBirds: number = 400;
   actors: Actor[] = [];
 
   appWidth = 300;
@@ -33,10 +33,10 @@ export class AppComponent implements OnInit, OnDestroy {
       if (i == 0) {
         bird.image = "leader";
         leader = bird;
-        bird.speed = 5;
+        bird.speed = 3;
       } else {
         let random = Math.random();
-        bird.speed = 3 * random +1;
+        bird.speed = 5 * random + .5;
       }
       bird.name = "Bird" + i;
       bird.direction = Actor.getRandomDirection();
@@ -64,11 +64,11 @@ export class AppComponent implements OnInit, OnDestroy {
         if (i == j) {
           continue;
         }
-        let avoidBehaviour = new AvoidBehaviour(10, currentBird, 25.0);
+        let avoidBehaviour = new AvoidBehaviour(11, currentBird, 50.0);
         mainBird.addBehaviour(avoidBehaviour);
       }
     }
-    let timer = TimerObservable.create(200, 25);
+    let timer = TimerObservable.create(200, 5);
     this.subscription = timer.subscribe(() => {
       this.update()
     });
