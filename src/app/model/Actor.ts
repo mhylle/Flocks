@@ -40,9 +40,17 @@ export class Actor {
   }
 
   update() {
+    let upVector = new Vector2d();
+    upVector.x = 0;
+    upVector.y = 1;
+    let cosV = this.direction.dot(upVector) / (upVector.length() * this.direction.length());
+    let rot = 180 - Math.acos(cosV) / this.degToRad;
+    this.rotation = "rotate(" + rot + "deg)";
+
     this.direction.normalize();
     this.scaledDirection = this.direction.scalar(this.speed);
     this.position = this.position.add(this.scaledDirection);
+
     this.posX = Math.floor(this.position.x) + 'px';
     this.posY = Math.floor(this.position.y) + 'px';
 
@@ -51,11 +59,6 @@ export class Actor {
       behaviour.update(this);
     }
 
-    let upVector = new Vector2d();
-    upVector.x = 0;
-    upVector.y = 1;
-    let cosV = this.direction.dot(upVector) / (upVector.length() * this.direction.length());
-    let rot = 180 - Math.acos(cosV) / this.degToRad;
-    this.rotation = "rotate(" + rot + "deg)";
+
   }
 }
