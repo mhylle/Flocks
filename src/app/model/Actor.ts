@@ -50,13 +50,12 @@ export class Actor {
       let behaviour = this.behaviours[i];
       behaviour.update(this);
     }
-    let directionVector = this.direction;
-    directionVector.normalize();
+
     let upVector = new Vector2d();
     upVector.x = 0;
     upVector.y = 1;
-    let cosV = directionVector.dot(upVector) / (upVector.length() * directionVector.length());
-    let rot = Math.acos(cosV) / this.degToRad;
+    let cosV = this.direction.dot(upVector) / (upVector.length() * this.direction.length());
+    let rot = 180 - Math.acos(cosV) / this.degToRad;
     this.rotation = "rotate(" + rot + "deg)";
   }
 }
