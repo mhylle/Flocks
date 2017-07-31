@@ -6,7 +6,7 @@ import {Component, OnDestroy, OnInit} from "@angular/core";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  title = 'app';
+  title = 'Flock!';
 
 
   constructor() {
