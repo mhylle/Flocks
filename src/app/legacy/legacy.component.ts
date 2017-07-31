@@ -8,7 +8,7 @@ import {AvoidBehaviour} from "../behaviours/AvoidBehaviour";
 import {TimerObservable} from "rxjs/observable/TimerObservable";
 
 @Component({
-  selector: 'app-legacy',
+  selector: 'legacy',
   templateUrl: './legacy.component.html',
   styleUrls: ['./legacy.component.css']
 })

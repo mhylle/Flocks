@@ -7,6 +7,7 @@ import {OverviewComponent} from './base/overview/overview.component';
 import {LegacyComponent} from './legacy/legacy.component';
 import {RouterModule, Routes} from "@angular/router";
 import { GameComponent } from './game/game.component';
+import { EntityselectorComponent } from './game/entityselector/entityselector.component';
 
 
 const appRoutes: Routes = [
@@ -26,7 +27,8 @@ const appRoutes: Routes = [
     BuilderComponent,
     OverviewComponent,
     LegacyComponent,
-    GameComponent
+    GameComponent,
+    EntityselectorComponent
   ],
   imports: [
     BrowserModule,

@@ -8,7 +8,7 @@ import {AvoidBehaviour} from "../behaviours/AvoidBehaviour";
 import {TimerObservable} from "rxjs/observable/TimerObservable";
 
 @Component({
-  selector: 'app-game',
+  selector: 'game',
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.css']
 })
@@ -31,10 +31,10 @@ export class GameComponent implements OnInit, OnDestroy {
       if (i == 0) {
         bird.image = "leader";
         leader = bird;
-        bird.speed = 3;
+        bird.speed = 1.5;
       } else {
         let random = Math.random();
-        bird.speed = 5 * random + .5;
+        bird.speed = 0.75 * random + .5;
       }
       bird.name = "Bird" + i;
       bird.direction = Actor.getRandomDirection();

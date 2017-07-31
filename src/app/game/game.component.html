@@ -2,7 +2,8 @@
 
 </div>
 <div class="gameContent">
-  <div class="flockPanel" [style.width] = "appWidth + 'px'" [style.height] ="appHeight + 'px'" style="position: relative; background-color: lightblue;">
+  <div class="flockPanel" [style.width]="appWidth + 'px'" [style.height]="appHeight + 'px'"
+       style="position: relative; background-color: lightblue;">
     <div *ngFor="let actor of actors"
          style="position:absolute;width: 24px; height: 12px;"
          [style.left]="actor.posX"
@@ -13,7 +14,9 @@
     >
       {{actor.debugMsg}}
     </div>
+  </div>
 </div>
+<entityselector></entityselector>
 <div class="gameFooter">
   <button>Start</button>
 </div>
