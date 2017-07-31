@@ -1,12 +1,12 @@
 <div>Selected Entities</div>
-<ul>
-  <li *ngFor="let selectedEntity of selectedEntities">
+<ul class="entityul">
+  <li *ngFor="let selectedEntity of selectedEntities" class="entityli">
     <div (click)="deSelectEntity(selectedEntity)">{{selectedEntity}}</div>
   </li>
 </ul>
 <div>Available Entities</div>
-<ul>
-  <li *ngFor="let availableEntity of availableEntities">
+<ul class="entityul">
+  <li *ngFor="let availableEntity of availableEntities" class="entityli">
     <div (click)="selectEntity(availableEntity)">{{availableEntity}}</div>
   </li>
 </ul>
