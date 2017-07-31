@@ -22,6 +22,7 @@ export class LegacyComponent implements OnInit, OnDestroy {
   constructor() {
 
   }
+
   ngOnInit(): void {
     let leader = null;
     for (let i = 0; i < this.nrOfBirds; i++) {

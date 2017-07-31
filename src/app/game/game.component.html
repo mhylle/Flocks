@@ -1,3 +1,19 @@
-<p>
-  game works!
-</p>
+<div class="gameHeader">
+
+</div>
+<div class="gameContent">
+  <div class="flockPanel" [style.width] = "appWidth + 'px'" [style.height] ="appHeight + 'px'" style="position: relative; background-color: lightblue;">
+    <div *ngFor="let actor of actors"
+         style="position:absolute;width: 24px; height: 12px;"
+         [style.left]="actor.posX"
+         [style.top]="actor.posY"
+         [style.transform]="actor.rotation"
+    
+         [ngClass]="actor.image"
+    >
+      {{actor.debugMsg}}
+    </div>
+</div>
+<div class="gameFooter">
+  <button>Start</button>
+</div>
