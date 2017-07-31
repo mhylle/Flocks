@@ -1,7 +1,15 @@
 <h1>Flocks, the new tower defense game!</h1>
-<nav>
-  <a routerLink="/base" routerLinkActive="active">Base Overview</a>
-  <a routerLink="/base/build" routerLinkActive="active">Build Base</a>
-  <a routerLink="/play" routerLinkActive="active">Play game</a>
-</nav>
+<div>
+  <nav>
+    <a routerLink="/base" routerLinkActive="active">Base Overview</a>
+    <a routerLink="/base/build" routerLinkActive="active">Build Base</a>
+    <a routerLink="/play" routerLinkActive="active">Play game</a>
+  </nav>
+</div>
+<div style="float: right">
+  <span>{{player.firstName}} {{player.lastName}}</span>
+  <div>Points: {{player.points}}</div>
+  <div>Gems: {{player.gems}}</div>
+  <div>Score: {{player.score}}</div>
+</div>
 <router-outlet></router-outlet>

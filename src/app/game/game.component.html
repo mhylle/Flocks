@@ -9,7 +9,7 @@
          [style.left]="actor.posX"
          [style.top]="actor.posY"
          [style.transform]="actor.rotation"
-    
+
          [ngClass]="actor.image"
     >
       {{actor.debugMsg}}
@@ -18,5 +18,5 @@
 </div>
 <entityselector></entityselector>
 <div class="gameFooter">
-  <button>Start</button>
+  <button (click)="start()">Start</button>
 </div>
