@@ -1,5 +1,29 @@
 # Flocks
 
+A different kind of tower defense.
+A game has 2 turns, an attack turn and a defense turn. 
+
+You design the base. Making the roads and placing the defences. Then you defend against the attack.
+After that you get to do an attack on the other player. 
+
+<h4>Win conditions:</h4> 
+Winning both attack and defence.
+If it's a tie, and both the bases was lost, then the fastest attack wins
+If it's a tie and both the bases was defended, then it's a real tie.
+
+
+<h4>Troop types:</h4>
+
+<b>Tank</b><br/>
+Lots of hp, not a lot of damage
+
+<b>Damage dealer</b><br/>
+Regular damage dealer, not a lot of hp, lots of damage
+
+
+
+## Technical
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.1.2.
 
 ## Development server
