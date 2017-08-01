@@ -18,7 +18,7 @@ export class EntityService {
     u1.size = 1;
     u1.hp = 120;
     u1.level = 1;
-    u1.speed = 0.4;
+    u1.speed = 0.2;
     this.units.push(u1);
     let u2 = new Unit();
     u2.name = "DPSy";
@@ -26,7 +26,7 @@ export class EntityService {
     u2.size = .5;
     u2.hp = 40;
     u2.level = 1;
-    u2.speed = 0.8;
+    u2.speed = 0.4;
     this.units.push(u2);
     let u3 = new Unit();
     u3.name = "Spawnerony";
@@ -34,7 +34,7 @@ export class EntityService {
     u3.size = .7;
     u3.hp = 30;
     u3.level = 1;
-    u3.speed = 0.5;
+    u3.speed = 0.25;
     this.units.push(u3);
     let u4 = new Unit();
     u4.name = "Healy";
@@ -42,7 +42,7 @@ export class EntityService {
     u4.size = .5;
     u4.hp = 20;
     u4.level = 1;
-    u4.speed = 0.5;
+    u4.speed = 0.25;
     this.units.push(u4);
   }
 

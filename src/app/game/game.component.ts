@@ -3,10 +3,9 @@ import {Subscription} from "rxjs/Subscription";
 import {Actor} from "../model/Actor";
 import {WanderBehaviour} from "../behaviours/WanderBehaviour";
 import {BoundsBehaviour} from "../behaviours/BoundsBehaviour";
-import {SeekBehaviour} from "../behaviours/SeekBehaviour";
-import {AvoidBehaviour} from "../behaviours/AvoidBehaviour";
 import {TimerObservable} from "rxjs/observable/TimerObservable";
 import {EntityService} from "./entity.service";
+import {Vector2d} from "../geometry/Vector2d";
 
 @Component({
   selector: 'game',
@@ -14,12 +13,13 @@ import {EntityService} from "./entity.service";
   styleUrls: ['./game.component.css']
 })
 export class GameComponent implements OnInit, OnDestroy {
-  nrOfBirds: number = 2;
+  units: number;
   actors: Actor[] = [];
 
   appWidth = 300;
   appHeight = 300;
   private subscription: Subscription;
+
   constructor(private entityService: EntityService) {
 
   }
@@ -71,6 +71,7 @@ export class GameComponent implements OnInit, OnDestroy {
   }
 
   update() {
+    this.units = this.actors.length;
     for (let i = 0; i < this.actors.length; i++) {
       let actor = this.actors[i];
       actor.update();
@@ -82,14 +83,22 @@ export class GameComponent implements OnInit, OnDestroy {
   }
 
   start() {
-
     let unitSelection = this.entityService.getUnitSelection();
     for (let i = 0; i < unitSelection.length; i++) {
       let unit = unitSelection[i];
       let actor = new Actor();
       actor.speed = unit.speed;
-      actor.position.x  = Math.random() * this.appWidth;
-      actor.position.y  = this.appHeight;
+      actor.position.x = Math.random() * this.appWidth;
+      actor.position.y = this.appHeight;
+      let dir = new Vector2d();
+      dir.x = 0;
+      dir.y = 1;
+      actor.direction = dir;
+      let wanderBehaviour = new WanderBehaviour(80, 8);
+      actor.addBehaviour(wanderBehaviour);
+      let boundsBehaviour = new BoundsBehaviour(0, this.appWidth, 0, this.appHeight);
+      actor.addBehaviour(boundsBehaviour);
+      actor.image = "arrow"
       this.actors.push(actor);
 
     }

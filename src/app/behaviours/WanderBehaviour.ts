@@ -16,7 +16,6 @@ export class WanderBehaviour implements Behaviour {
     if (this.tick == 0) {
       this.direction = Actor.getRandomDirection();
     }
-    // actor.debugMsg = "" + this.tick;
     this.tick++;
 
     if (this.changeInterval == this.tick) {
@@ -24,7 +23,6 @@ export class WanderBehaviour implements Behaviour {
     }
 
     let vector2d = this.direction.scalar(this.weight);
-
     actor.direction = actor.direction.add(vector2d);
   }
 

@@ -3,8 +3,8 @@ export class Vector2d {
   y: number;
 
   constructor() {
-    this.x = 50;
-    this.y = 50;
+    this.x = 0;
+    this.y = 0;
   }
 
   normalize() {

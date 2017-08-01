@@ -49,7 +49,7 @@ export class Actor {
     upVector.x = 0;
     upVector.y = 1;
     let cosV = this.direction.dot(upVector) / (upVector.length() * this.direction.length());
-    let rot = 180 - Math.acos(cosV) / this.degToRad;
+    let rot = Math.acos(cosV) / this.degToRad;
     this.rotation = "rotate(" + rot + "deg)";
 
     this.direction.normalize();
