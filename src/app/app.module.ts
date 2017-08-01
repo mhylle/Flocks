@@ -7,7 +7,8 @@ import {OverviewComponent} from './base/overview/overview.component';
 import {LegacyComponent} from './legacy/legacy.component';
 import {RouterModule, Routes} from "@angular/router";
 import {GameComponent} from './game/game.component';
-import {EntityselectorComponent} from './game/entityselector/entityselector.component';
+import {EntitySelectorComponent} from './game/entityselector/entityselector.component';
+import {PlayerService} from "./game/player.service";
 
 
 const appRoutes: Routes = [
@@ -28,7 +29,7 @@ const appRoutes: Routes = [
     OverviewComponent,
     LegacyComponent,
     GameComponent,
-    EntityselectorComponent
+    EntitySelectorComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +38,7 @@ const appRoutes: Routes = [
       {enableTracing: true} // <-- debugging purposes only
     )
   ],
-  providers: [],
+  providers: [PlayerService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

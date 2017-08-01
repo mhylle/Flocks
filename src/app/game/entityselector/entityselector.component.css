@@ -1,19 +1,22 @@
-.entityul {
+.unitlist {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
 }
 
-.entityli {
+.unitoverview {
   border: 1px solid black;
   float: left;
-  padding: 12px;
+  margin: 0;
+  padding-left: 2px;
+  width: 100px;
+  height: 150px;
 }
 
-.entityli a {
-  display: block;
-  text-align: center;
-  padding: 16px;
-  text-decoration: none;
-}
+/*.entityli a {*/
+  /*display: block;*/
+  /*text-align: center;*/
+  /*padding: 16px;*/
+  /*text-decoration: none;*/
+/*}*/

@@ -5,6 +5,6 @@ export class Unit {
   speed: number;
   size: number;
   level: number;
-  score: number;
+  cost: number;
 
 }

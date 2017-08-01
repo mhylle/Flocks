@@ -1,39 +1,45 @@
 import {Component, OnInit} from '@angular/core';
+import {EntityService} from "../entity.service";
+import {Unit} from "../../model/Unit";
+import {PlayerService} from "../player.service";
 
 @Component({
   selector: 'entityselector',
   templateUrl: './entityselector.component.html',
-  styleUrls: ['./entityselector.component.css']
+  styleUrls: ['./entityselector.component.css'],
+  providers: [EntityService]
 })
-export class EntityselectorComponent implements OnInit {
+export class EntitySelectorComponent implements OnInit {
 
-  selectedEntities: any[] = [];
-  availableEntities: any[] = [];
+  selectedEntities: Unit[] = [];
+  availableEntities: Unit[] = [];
 
-  constructor() {
+  constructor(private playerService: PlayerService, private entityService: EntityService) {
   }
 
   ngOnInit() {
-
-    this.availableEntities.push("Tank");
-    this.availableEntities.push("DPS");
-    this.availableEntities.push("Spawner");
-    this.availableEntities.push("Healer");
+    this.availableEntities = this.entityService.getUnits();
   }
 
-  selectEntity(entity: any) {
-    let indexOf = this.availableEntities.indexOf(entity);
-    if (indexOf > -1) {
-      this.availableEntities.splice(indexOf, 1);
-      this.selectedEntities.push(entity);
+  selectEntity(entity: Unit) {
+    let player = this.playerService.getPlayer();
+    if (player.points > entity.cost) {
+      let indexOf = this.availableEntities.indexOf(entity);
+      if (indexOf > -1) {
+        this.availableEntities.splice(indexOf, 1);
+        this.selectedEntities.push(entity);
+        player.points = player.points - entity.cost;
+      }
     }
   }
 
-  deSelectEntity(entity: any) {
+  deSelectEntity(entity: Unit) {
+    let player = this.playerService.getPlayer();
     let indexOf = this.selectedEntities.indexOf(entity);
     if (indexOf > -1) {
       this.selectedEntities.splice(indexOf, 1);
       this.availableEntities.push(entity);
+      player.points = player.points + entity.cost;
     }
 
   }

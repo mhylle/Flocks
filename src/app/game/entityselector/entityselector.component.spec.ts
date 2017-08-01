@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EntityselectorComponent } from './entityselector.component';
+import { EntitySelectorComponent } from './entityselector.component';
 
-describe('EntityselectorComponent', () => {
-  let component: EntityselectorComponent;
-  let fixture: ComponentFixture<EntityselectorComponent>;
+describe('EntitySelectorComponent', () => {
+  let component: EntitySelectorComponent;
+  let fixture: ComponentFixture<EntitySelectorComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EntityselectorComponent ]
+      declarations: [ EntitySelectorComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EntityselectorComponent);
+    fixture = TestBed.createComponent(EntitySelectorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,12 +1,28 @@
 <div>Selected Entities</div>
-<ul class="entityul">
-  <li *ngFor="let selectedEntity of selectedEntities" class="entityli">
-    <div (click)="deSelectEntity(selectedEntity)">{{selectedEntity}}</div>
+<ul class="unitlist">
+  <li *ngFor="let unit of selectedEntities" class="unitoverview">
+    <div (click)="deSelectEntity(unit)">
+      <div><h4>{{unit.name}}</h4></div>
+      <div class="stats">
+        <div class="header">Stats:</div>
+        <div><span>Hitpoints:</span> <span>{{unit.hp}}</span></div>
+        <div><span>Speed: </span><span>{{unit.speed}}</span></div>
+        <div><span>Cost:</span><span>{{unit.cost}}</span></div>
+      </div>
+    </div>
   </li>
 </ul>
 <div>Available Entities</div>
-<ul class="entityul">
-  <li *ngFor="let availableEntity of availableEntities" class="entityli">
-    <div (click)="selectEntity(availableEntity)">{{availableEntity}}</div>
+<ul class="unitlist">
+  <li *ngFor="let unit of availableEntities" class="unitoverview">
+    <div (click)="selectEntity(unit)">
+      <div><h4>{{unit.name}}</h4></div>
+      <div class="stats">
+        <div class="header">Stats:</div>
+        <div><span>Hitpoints:</span> <span>{{unit.hp}}</span></div>
+        <div><span>Speed: </span><span>{{unit.speed}}</span></div>
+        <div><span>Cost:</span><span>{{unit.cost}}</span></div>
+      </div>
+    </div>
   </li>
 </ul>
