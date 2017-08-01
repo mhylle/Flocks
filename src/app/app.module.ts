@@ -9,6 +9,7 @@ import {RouterModule, Routes} from "@angular/router";
 import {GameComponent} from './game/game.component';
 import {EntitySelectorComponent} from './game/entityselector/entityselector.component';
 import {PlayerService} from "./game/player.service";
+import {EntityService} from "./game/entity.service";
 
 
 const appRoutes: Routes = [
@@ -38,7 +39,7 @@ const appRoutes: Routes = [
       {enableTracing: true} // <-- debugging purposes only
     )
   ],
-  providers: [PlayerService],
+  providers: [PlayerService, EntityService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

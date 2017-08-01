@@ -6,8 +6,7 @@ import {PlayerService} from "../player.service";
 @Component({
   selector: 'entityselector',
   templateUrl: './entityselector.component.html',
-  styleUrls: ['./entityselector.component.css'],
-  providers: [EntityService]
+  styleUrls: ['./entityselector.component.css']
 })
 export class EntitySelectorComponent implements OnInit {
 
@@ -21,25 +20,27 @@ export class EntitySelectorComponent implements OnInit {
     this.availableEntities = this.entityService.getUnits();
   }
 
-  selectEntity(entity: Unit) {
+  selectUnit(unit: Unit) {
     let player = this.playerService.getPlayer();
-    if (player.points > entity.cost) {
-      let indexOf = this.availableEntities.indexOf(entity);
+    if (player.points > unit.cost) {
+      let indexOf = this.availableEntities.indexOf(unit);
       if (indexOf > -1) {
         this.availableEntities.splice(indexOf, 1);
-        this.selectedEntities.push(entity);
-        player.points = player.points - entity.cost;
+        this.selectedEntities.push(unit);
+        this.entityService.selectUnit(unit);
+        player.points = player.points - unit.cost;
       }
     }
   }
 
-  deSelectEntity(entity: Unit) {
+  deSelectUnit(unit: Unit) {
     let player = this.playerService.getPlayer();
-    let indexOf = this.selectedEntities.indexOf(entity);
+    let indexOf = this.selectedEntities.indexOf(unit);
     if (indexOf > -1) {
       this.selectedEntities.splice(indexOf, 1);
-      this.availableEntities.push(entity);
-      player.points = player.points + entity.cost;
+      this.availableEntities.push(unit);
+      this.entityService.deSelectUnit(unit);
+      player.points = player.points + unit.cost;
     }
 
   }

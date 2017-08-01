@@ -6,6 +6,7 @@ import {BoundsBehaviour} from "../behaviours/BoundsBehaviour";
 import {SeekBehaviour} from "../behaviours/SeekBehaviour";
 import {AvoidBehaviour} from "../behaviours/AvoidBehaviour";
 import {TimerObservable} from "rxjs/observable/TimerObservable";
+import {EntityService} from "./entity.service";
 
 @Component({
   selector: 'game',
@@ -19,7 +20,7 @@ export class GameComponent implements OnInit, OnDestroy {
   appWidth = 300;
   appHeight = 300;
   private subscription: Subscription;
-  constructor() {
+  constructor(private entityService: EntityService) {
 
   }
 
@@ -81,6 +82,17 @@ export class GameComponent implements OnInit, OnDestroy {
   }
 
   start() {
+
+    let unitSelection = this.entityService.getUnitSelection();
+    for (let i = 0; i < unitSelection.length; i++) {
+      let unit = unitSelection[i];
+      let actor = new Actor();
+      actor.speed = unit.speed;
+      actor.position.x  = Math.random() * this.appWidth;
+      actor.position.y  = this.appHeight;
+      this.actors.push(actor);
+
+    }
     let timer = TimerObservable.create(200, 5);
     this.subscription = timer.subscribe(() => {
       this.update()

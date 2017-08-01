@@ -1,7 +1,7 @@
 <div>Selected Entities</div>
 <ul class="unitlist">
   <li *ngFor="let unit of selectedEntities" class="unitoverview">
-    <div (click)="deSelectEntity(unit)">
+    <div (click)="deSelectUnit(unit)">
       <div><h4>{{unit.name}}</h4></div>
       <div class="stats">
         <div class="header">Stats:</div>
@@ -15,7 +15,7 @@
 <div>Available Entities</div>
 <ul class="unitlist">
   <li *ngFor="let unit of availableEntities" class="unitoverview">
-    <div (click)="selectEntity(unit)">
+    <div (click)="selectUnit(unit)">
       <div><h4>{{unit.name}}</h4></div>
       <div class="stats">
         <div class="header">Stats:</div>

@@ -17,6 +17,11 @@ export class Actor {
 
   private scaledDirection: Vector2d;
 
+  constructor() {
+    this.position = new Vector2d();
+    this.direction = Actor.getRandomDirection();
+  }
+
   static getRandomDirection(): Vector2d {
     let rotation = Math.random();
     let vector2d = new Vector2d();

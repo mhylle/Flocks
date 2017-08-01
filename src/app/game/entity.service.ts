@@ -5,6 +5,8 @@ import {Unit} from "../model/Unit";
 export class EntityService {
   units: Unit[] = [];
 
+  selectedUnits: Unit[] = [];
+
   constructor() {
     this.createUnitData();
   }
@@ -46,5 +48,20 @@ export class EntityService {
 
   getUnits(): Unit[] {
     return this.units;
+  }
+
+  selectUnit(unit: Unit) {
+    this.selectedUnits.push(unit);
+  }
+
+  deSelectUnit(unit: Unit){
+    let indexOf = this.selectedUnits.indexOf(unit);
+    if (indexOf > -1) {
+      this.selectedUnits.splice(indexOf, 1);
+    }
+  }
+
+  getUnitSelection() : Unit[] {
+    return this.selectedUnits;
   }
 }
