@@ -15,7 +15,7 @@ export class Actor {
 
   debugMsg: string;
 
-  private scaledDirection: Vector2d;
+  scaledDirection: Vector2d;
 
   constructor() {
     this.position = new Vector2d();
