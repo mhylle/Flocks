@@ -8,6 +8,7 @@ import {Vector2d} from "../geometry/Vector2d";
 import {BaseService} from "../base/base.service";
 import {Base} from "../model/Base";
 import {SeekBehaviour} from "../behaviours/SeekBehaviour";
+import {AvoidBehaviour} from "../behaviours/AvoidBehaviour";
 
 @Component({
   selector: 'game',
@@ -57,14 +58,20 @@ export class GameComponent implements OnInit, OnDestroy {
       let actor = new Actor();
       actor.speed = unit.speed;
       actor.position.x = Math.random() * this.appWidth;
+      actor.position.x < 25 ? actor.position.x = 25 : actor.position.x;
+      actor.position.x > 275 ? actor.position.x = 275 : actor.position.x;
       actor.position.y = this.appHeight;
       let dir = new Vector2d();
       dir.x = 0;
       dir.y = -1;
       actor.direction = dir;
-      actor.addBehaviour(new SeekBehaviour(10,this.base.tiles[0]));
-      // let wanderBehaviour = new WanderBehaviour(80, 8);
-      // actor.addBehaviour(wanderBehaviour);
+
+      actor.addBehaviour(new SeekBehaviour(10, this.base.towers[0]));
+      let tiles = this.base.tiles;
+      for (let j = 0; j < tiles.length; j++) {
+        let tile = tiles[j];
+        actor.addBehaviour(new AvoidBehaviour(100, tile, 20));
+      }
 
       let boundsBehaviour = new BoundsBehaviour(0, this.appWidth, 0, this.appHeight);
       actor.addBehaviour(boundsBehaviour);

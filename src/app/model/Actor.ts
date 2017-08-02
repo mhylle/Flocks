@@ -5,6 +5,8 @@ export class Actor {
   name: string;
   position: Vector2d;
   direction: Vector2d;
+  width: string;
+  height: string;
   degToRad: number = Math.PI / 180;
   speed: number;
   posX: string;

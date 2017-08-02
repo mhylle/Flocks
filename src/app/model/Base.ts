@@ -8,4 +8,5 @@ export class Base {
   height: number;
 
   tiles: Actor[] = [];
+  towers: Actor[] = [];
 }

@@ -4,6 +4,8 @@ import {Actor} from "./Actor";
 import {Behaviour} from "../behaviours/Behaviour";
 
 export class Tower implements Tile, Actor {
+  width: string;
+  height: string;
   direction: Vector2d;
   degToRad: number;
   speed: number;
