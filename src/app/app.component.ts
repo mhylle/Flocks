@@ -1,6 +1,5 @@
 import {Component, OnDestroy, OnInit} from "@angular/core";
 import {Player} from "./model/Player";
-import {Unit} from "./model/Unit";
 import {PlayerService} from "./game/player.service";
 
 @Component({
