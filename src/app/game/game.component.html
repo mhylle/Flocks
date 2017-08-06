@@ -4,6 +4,21 @@
 <div class="gameContent">
   <div class="flockPanel" [style.width]="appWidth + 'px'" [style.height]="appHeight + 'px'"
        style="position: relative; background-color: lightblue;">
+    <div *ngFor="let tile of base.tiles"
+         style="position: absolute; background-color: burlywood;"
+         [style.width]="tile.width"
+         [style.height]="tile.height"
+         [style.left]="tile.posX"
+         [style.top]="tile.posY">
+      {{tile.name}}
+    </div>
+    <div *ngFor="let tower of base.towers"
+         style="position: absolute; width: 50px; height: 50px; background-color: brown"
+         [style.left]="tower.posX"
+         [style.top]="tower.posY">
+      {{tower.name}}
+    </div>
+    
     <div *ngFor="let actor of actors"
          style="position:absolute;width: 24px; height: 12px;"
          [style.left]="actor.posX"

@@ -1,16 +1,20 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from "rxjs/Subscription";
 import {Actor} from "../model/Actor";
-import {WanderBehaviour} from "../behaviours/WanderBehaviour";
 import {BoundsBehaviour} from "../behaviours/BoundsBehaviour";
 import {TimerObservable} from "rxjs/observable/TimerObservable";
 import {EntityService} from "./entity.service";
 import {Vector2d} from "../geometry/Vector2d";
+import {BaseService} from "../base/base.service";
+import {Base} from "../model/Base";
+import {SeekBehaviour} from "../behaviours/SeekBehaviour";
+import {AvoidBehaviour} from "../behaviours/AvoidBehaviour";
 
 @Component({
   selector: 'game',
   templateUrl: './game.component.html',
-  styleUrls: ['./game.component.css']
+  styleUrls: ['./game.component.css'],
+  providers: [BaseService]
 })
 export class GameComponent implements OnInit, OnDestroy {
   units: number;
@@ -18,56 +22,17 @@ export class GameComponent implements OnInit, OnDestroy {
 
   appWidth = 300;
   appHeight = 300;
-  private subscription: Subscription;
+  base: Base;
 
-  constructor(private entityService: EntityService) {
+  private subscription: Subscription;
+  private started: boolean = false;
+
+  constructor(private entityService: EntityService, private baseService: BaseService) {
 
   }
 
   ngOnInit(): void {
-    // let leader = null;
-    // for (let i = 0; i < this.nrOfBirds; i++) {
-    //
-    //   let bird = new Actor();
-    //   if (i == 0) {
-    //     bird.image = "leader";
-    //     leader = bird;
-    //     bird.speed = 1.5;
-    //   } else {
-    //     let random = Math.random();
-    //     bird.speed = 0.75 * random + .5;
-    //   }
-    //   bird.name = "Bird" + i;
-    //   bird.direction = Actor.getRandomDirection();
-    //
-    //   bird.position = Actor.getRandomPosition(this.appWidth, this.appHeight);
-    //
-    //   let wanderBehaviour = new WanderBehaviour(80, 8);
-    //   bird.addBehaviour(wanderBehaviour);
-    //
-    //   let boundsBehaviour = new BoundsBehaviour(0, this.appWidth, 0, this.appHeight);
-    //   bird.addBehaviour(boundsBehaviour);
-    //
-    //   if (i > 0) {
-    //     let seekBehaviour = new SeekBehaviour(10, leader);
-    //     bird.image = "arrow";
-    //     bird.addBehaviour(seekBehaviour);
-    //   }
-    //
-    //   this.actors.push(bird);
-    // }
-    // for (let i = 0; i < this.actors.length; i++) {
-    //   let mainBird = this.actors[i];
-    //   for (let j = 0; j < this.actors.length; j++) {
-    //     let currentBird = this.actors[i];
-    //     if (i == j) {
-    //       continue;
-    //     }
-    //     let avoidBehaviour = new AvoidBehaviour(11, currentBird, 50.0);
-    //     mainBird.addBehaviour(avoidBehaviour);
-    //   }
-    // }
-
+    this.base = this.baseService.getBase();
   }
 
   update() {
@@ -83,22 +48,34 @@ export class GameComponent implements OnInit, OnDestroy {
   }
 
   start() {
+    if (this.started) {
+      return;
+    }
+    this.started = true;
     let unitSelection = this.entityService.getUnitSelection();
     for (let i = 0; i < unitSelection.length; i++) {
       let unit = unitSelection[i];
       let actor = new Actor();
       actor.speed = unit.speed;
       actor.position.x = Math.random() * this.appWidth;
+      actor.position.x < 25 ? actor.position.x = 25 : actor.position.x;
+      actor.position.x > 275 ? actor.position.x = 275 : actor.position.x;
       actor.position.y = this.appHeight;
       let dir = new Vector2d();
       dir.x = 0;
-      dir.y = 1;
+      dir.y = -1;
       actor.direction = dir;
-      let wanderBehaviour = new WanderBehaviour(80, 8);
-      actor.addBehaviour(wanderBehaviour);
+
+      actor.addBehaviour(new SeekBehaviour(10, this.base.towers[0]));
+      let tiles = this.base.tiles;
+      for (let j = 0; j < tiles.length; j++) {
+        let tile = tiles[j];
+        actor.addBehaviour(new AvoidBehaviour(100, tile, 20));
+      }
+
       let boundsBehaviour = new BoundsBehaviour(0, this.appWidth, 0, this.appHeight);
       actor.addBehaviour(boundsBehaviour);
-      actor.image = "arrow"
+      actor.image = "arrow";
       this.actors.push(actor);
 
     }

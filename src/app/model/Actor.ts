@@ -5,6 +5,8 @@ export class Actor {
   name: string;
   position: Vector2d;
   direction: Vector2d;
+  width: string;
+  height: string;
   degToRad: number = Math.PI / 180;
   speed: number;
   posX: string;
@@ -15,7 +17,7 @@ export class Actor {
 
   debugMsg: string;
 
-  private scaledDirection: Vector2d;
+  scaledDirection: Vector2d;
 
   constructor() {
     this.position = new Vector2d();
